@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Lumanosimo&display=swap");
+body,
+button,
+input,
+h1 {
+  font-family: "Lumanosimo", cursive;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #b0bbeb;
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+  width: 100vw;
+}
