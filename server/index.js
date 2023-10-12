@@ -15,6 +15,10 @@ app.use(fileUpload());
 
 app.use('/api', userRouter);
 app.use('/api', messageRouter);
+app.use('', (req, res) => {
+    res.send('Server is running.');
+}
+);
 
 // to parse data from frontend
 app.use(express.json({ limit: '50mb', extended: true }));
