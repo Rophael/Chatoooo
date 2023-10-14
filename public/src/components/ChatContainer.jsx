@@ -402,107 +402,143 @@ export default function ChatContainer({ currentChat, currentUser, socket }) {
 }
 
 const Container = styled.div`
-  display: grid;
-  grid-template-rows: 10% 80% 10%;
-  gap: 0.1rem;
-  overflow: hidden;
-  @media screen and (min-width: 720px) and (max-width: 1080px) {
-    grid-template-rows: 15% 70% 15%;
-  }
-  .chat-header {
-    background-color: #9a86f3;
-    border-radius: 10rem;
-    padding: 1rem;
+/* Base styles for larger screens */
+display: grid;
+grid-template-rows: 10% 80% 10%;
+gap: 0.1rem;
+overflow: hidden;
+
+@media screen and (min-width: 720px) and (max-width: 1080px) {
+  /* Adjust for medium-sized screens */
+  grid-template-rows: 15% 70% 15%;
+}
+
+/* Chat header styles */
+.chat-header {
+  background-color: #9a86f3;
+  border-radius: 10rem;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+
+  /* User details styles */
+  .user-details {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: 1rem;
-    .user-details {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      .img {
-        img {
-          height: 3rem;
-          width: 3rem;
-          border-radius: 50%;
-          position: relative;
-          border: 2px solid #fff;
-          top: 0.2rem;
-        }
+
+    /* Profile image styles */
+    .img {
+      img {
+        height: 3rem;
+        width: 3rem;
+        border-radius: 50%;
+        position: relative;
+        border: 2px solid #fff;
+        top: 0.2rem;
       }
-      .username {
-        h3 {
-          color: black;
-        }
+    }
+
+    /* Username styles */
+    .username {
+      h3 {
+        color: black;
       }
     }
   }
-  .chat-messages {
-    padding: 1rem 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    overflow: auto;
-    &::-webkit-scrollbar {
-      width: 0.2rem;
-      &-thumb {
-        background-color: #ffffff39;
-        width: 0.1rem;
-        border-radius: 1rem;
-      }
+}
+
+/* Chat messages container styles */
+.chat-messages {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow: auto;
+
+  /* Webkit scrollbar styles */
+  &::-webkit-scrollbar {
+    width: 0.2rem;
+
+    &-thumb {
+      background-color: #ffffff39;
+      width: 0.1rem;
+      border-radius: 1rem;
     }
-    .message {
-      display: flex;
-      align-items: center;
-      .content {
-        max-width: 40%;
-        overflow-wrap: break-word;
-        padding: 1rem;
-        font-size: 1.1rem;
-        border-radius: 1rem;
-        color: #d1d1d1;
-        @media screen and (min-width: 720px) and (max-width: 1080px) {
-          max-width: 70%;
+  }
+
+  /* Message styles */
+  .message {
+    display: flex;
+    align-items: center;
+
+    /* Message content styles */
+    .content {
+      max-width: 40%;
+      overflow-wrap: break-word;
+      padding: 1rem;
+      font-size: 1.1rem;
+      border-radius: 1rem;
+      color: #d1d1d1;
+
+      @media screen and (min-width: 720px) and (max-width: 1080px) {
+        /* Adjust content width for medium-sized screens */
+        max-width: 70%;
+      }
+
+      /* Message info styles */
+      .message-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.5rem;
+
+        /* Timestamp styles */
+        .timestamp {
+          font-size: 0.8rem;
         }
-        .message-info {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          gap: 0.5rem;
-          .timestamp {
-            font-size: 0.8rem;
+
+        /* Seen indicator styles */
+        .seen-indicator {
+          svg {
+            font-size: 1.2rem;
+            color: #ffffff39;
           }
-          .seen-indicator {
+
+          &.seen {
             svg {
-              font-size: 1.2rem;
+              color: white;
+            }
+          }
+
+          &.not-seen {
+            svg {
               color: #ffffff39;
             }
-            &.seen {
-              svg {
-                color: white;
-              }
-            }
-            &.not-seen {
-              svg {
-                color: #ffffff39;
-              }
-            }
           }
         }
       }
     }
-    .sended {
-      justify-content: flex-end;
-      .content {
-        background-color: #9900ff;
-      }
-    }
-    .received {
-      justify-content: flex-start;
-      .content {
-        background-color: #ffffff39;
-      }
+  }
+
+  /* Sent and received message styles */
+  .sended {
+    justify-content: flex-end;
+
+    .content {
+      background-color: #9900ff;
     }
   }
+
+  .received {
+    justify-content: flex-start;
+
+    .content {
+      background-color: #ffffff39;
+    }
+  }
+}
+
 `;
