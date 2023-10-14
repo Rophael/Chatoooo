@@ -266,41 +266,25 @@ function Chat() {
 }
 
 const Container = styled.div`
-/* Base styles */
-height: 100vh;
-width: 100vw;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-gap: 1rem;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 
-/* Chat container */
-.chat {
-  height: 98vh;
-  width: 98vw;
-  background-color: #333768;
-  display: grid;
-  border-radius: 3rem;
-  grid-template-columns: 25% 75%;
-
-  @media screen and (min-width: 720px) and (max-width: 1024px) {
-    grid-template-columns: 35% 65%;
+  .chat {
+    height: 98vh;
+    width: 98vw;
+    background-color: #333768;
+    display: grid;
+    border-radius: 3rem;
+    grid-template-columns: 25% 75%;
+    @media screen and (min-width: 720px) and (max-width: 1024px) {
+      grid-template-columns: 35% 65%;
+    }
   }
-
-  @media screen and (max-width: 719px) {
-    /* Adjust for smaller screens (e.g., mobile devices) */
-    grid-template-columns: 1fr; /* Full width for single column */
-    height: 95vh; /* Slightly reduce height */
-    border-radius: 0; /* Remove border radius for small screens */
-  }
-  
-  @media screen and (min-width: 1025px) {
-    /* Adjust for larger screens */
-    grid-template-columns: 20% 80%; /* Wider first column */
-  }
-}
-
 };
 `;
 export default Chat;
