@@ -4,9 +4,10 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const userRouter = require('./routes/userRoute');
 const messageRouter = require('./routes/messageRoute');
-const socket = require('socket.io');
+// const socket = require('socket.io');
 const fileUpload = require('express-fileupload');
 const app = express();
+const { Server } = require('socket.io');
 app.use(cors());
 dotenv.config();
 app.use(express.json());
@@ -44,14 +45,13 @@ const server = app.listen(process.env.PORT, () => {
 });
 
 // Socket.io 
-const io = socket(server, {
-    cors: {
-        origin: 'https://chatoooo.vercel.app',
-        credentials: true,
-    }
+// const io = socket(server);
+const io = new Server(server, {
+    connectionStateRecovery: {}
 });
 global.onlineUsers = new Map(); // to store online users
 io.on('connection', (socket) => {
+    console.log("Socket connected: " + socket.id);
     global.chatSocket = socket;
     socket.on("add-user", (userId) => {
         onlineUsers.set(userId, socket.id);
