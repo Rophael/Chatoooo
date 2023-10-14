@@ -20,6 +20,13 @@ app.use('', (req, res) => {
     res.send('Server is running.');
 }
 );
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', 'https://chatoooo.vercel.app');
+    // You can also specify other headers as needed
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    next();
+});
 
 // to parse data from frontend
 app.use(express.json({ limit: '50mb', extended: true }));
