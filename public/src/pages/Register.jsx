@@ -264,18 +264,40 @@ const FormContainer = styled.div`
   .password-requirements li:not(.checked) {
     color: red;
   }
+  /* Media query for smaller screens */
+  @media (max-width: 768px) {
+    body {
+      display: block;
+    }
+
+    form {
+      padding: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
 `;
 
 const IconContainer = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   position: absolute;
   top: 50%;
   left: 70%;
   transform: translate(-50%, -50%);
+
   img {
     width: 100%;
-    height: 30rem;
+    max-height: 30rem; /* Set a maximum height to maintain the aspect ratio */
+  }
+
+  @media (max-width: 768px) {
+    top: 20%; /* Adjust the vertical position for smaller screens */
+    left: 50%; /* Center it horizontally on smaller screens */
+    transform: translate(-50%, -50%);
   }
 `;
+
 export default Register;

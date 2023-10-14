@@ -123,13 +123,16 @@ function Login() {
     </>
   );
 }
+
 const FormContainer = styled.div`
   width: 100vw;
+  max-height: 80vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 1rem;
+  overflow-y: auto;
   form {
     display: flex;
     flex-direction: column;
@@ -175,17 +178,41 @@ const FormContainer = styled.div`
       border: 1px solid #000;
     }
   }
+  /* Media query for smaller screens */
+  @media (max-width: 768px) {
+    body {
+      display: block;
+    }
+
+    form {
+      padding: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
 `;
 const IconContainer = styled.div`
   display: flex;
+  max-height: 80vh;
+  overflow-y: auto;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   position: absolute;
   top: 50%;
   left: 70%;
   transform: translate(-50%, -50%);
+
   img {
     width: 100%;
-    height: 30rem;
+    max-height: 30rem; /* Set a maximum height to maintain the aspect ratio */
+  }
+
+  @media (max-width: 768px) {
+    top: 20%; /* Adjust the vertical position for smaller screens */
+    left: 50%; /* Center it horizontally on smaller screens */
+    transform: translate(-50%, -50%);
   }
 `;
+
 export default Login;
