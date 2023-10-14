@@ -13,7 +13,9 @@ h1 {
 body {
   background-color: #b0bbeb;
   height: 100vh;
+  max-height: 80vh;
   display: flex;
   overflow: hidden;
+  overflow-y: auto;
   width: 100vw;
 }
