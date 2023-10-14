@@ -174,7 +174,12 @@ function Chat() {
   });
 
   useEffect(() => {
-    socket.current = io(host);
+    socket.current = io(host, {
+      reconnection: true,
+      reconnectionDelay: 1000, // Delay before the first reconnection attempt
+      reconnectionAttempts: 3, // Number of reconnection attempts
+    });
+
     socket.current.emit("add-user", currentUser._id);
   }, [currentUser]);
 

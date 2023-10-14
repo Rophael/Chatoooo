@@ -1,4 +1,5 @@
-export const host = 'http://localhost:4000';
+export const host = 'https://chatoooo.onrender.com';
+// export const host = 'http://localhost:4000';
 export const apiRoutes = {
     register: `${host}/api/auth/register`,
     login: `${host}/api/auth/login`,
