@@ -12,6 +12,7 @@ export default function Welcome(user) {
     </Container>
   );
 }
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -19,9 +20,26 @@ const Container = styled.div`
   justify-content: center;
   color: black;
   img {
-    height: 20rem;
+    max-width: 100%;
+    height: auto;
+  }
+  h1 {
+    font-size: 1.5rem;
+    text-align: center;
   }
   span {
     color: #4e00ff;
   }
-`;
+
+  @media (min-width: 768px) {
+    h1 {
+      font-size: 2rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    h1 {
+      font-size: 2.5rem;
+    }
+  }
+};
