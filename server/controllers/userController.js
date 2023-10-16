@@ -161,6 +161,7 @@ const getAllUsers = async (req, res) => {
                 const imageBase64 = fs.readFileSync(imagePath, { encoding: 'base64' });
                 users[i].img = imageBase64;
             }
+
         }
         res.status(200).json({ message: "Users fetched successfully", status: true, data: users })
     }
@@ -185,23 +186,36 @@ const getCurrentUser = async (req, res) => {
             "img",
             "_id"
         ])
+
         const imageName = user.img;
-        const imagePath = path.join(__dirname, '..', 'images', imageName);
-        if (fs.existsSync(imagePath)) {
-            const imageBase64 = fs.readFileSync(imagePath, { encoding: 'base64' });
-            res.status(200).json({
+        if (typeof imageName === 'string') {
+            const imagePath = path.join(__dirname, '..', 'images', imageName);
+            if (fs.existsSync(imagePath)) {
+                const imageBase64 = fs.readFileSync(imagePath, { encoding: 'base64' });
+                res.status(200).json({
+                    message: "User fetched successfully",
+                    status: true,
+                    data: {
+                        username: user.username,
+                        _id: user._id,
+                        img: imageBase64, // Include the image data
+                    }
+                });
+            } else {
+                return res.status(500).json({ message: "Image not found", status: false });
+            }
+        }
+        else {
+            return res.status(200).json({
                 message: "User fetched successfully",
                 status: true,
                 data: {
                     username: user.username,
                     _id: user._id,
-                    img: imageBase64, // Include the image data
+                    img: user.img, // Include the image data
                 }
             });
-        } else {
-            res.status(500).json({ message: "Image not found", status: false });
         }
-
     }
     catch (err) { res.status(200).json({ message: err.message, status: false }) }
 }

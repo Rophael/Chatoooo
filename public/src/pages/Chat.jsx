@@ -24,6 +24,7 @@ function Chat() {
     } else {
       handelCurrentUser();
       handelAllContacts();
+      console.log(contacts);
     }
   });
 
@@ -37,56 +38,67 @@ function Chat() {
     socket.current.emit("add-user", currentUser._id);
   }, [currentUser]);
 
-  const handleApiError = (error) => {
-    if (error.response && error.response.data && error.response.data.message) {
-      if (error.response.data.message === "jwt expired") {
-        localStorage.removeItem("Chat-app-user");
-        navigate("/login");
-      }
-      toast.error(error.response.data.message, {
-        position: "bottom-right",
-        autoClose: 5000,
-        pauseOnHover: true,
-        draggable: true,
-      });
-    } else {
-      console.error(error);
-    }
-  };
-
   async function handelCurrentUser() {
-    try {
-      const response = await axios.get(apiRoutes.currentUser, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "multipart/form-data",
-        },
-      });
-      if (response.data.status === true) {
-        setCurrentUser(response.data.data);
-      } else {
-        handleApiError(response);
+    if (currentUser) {
+      try {
+        axios
+          .get(apiRoutes.currentUser, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          })
+          .then((res) => {
+            if (res.data.status === true) {
+              setCurrentUser(res.data.user);
+            }
+            if (res.data.message === "jwt expired") {
+              localStorage.removeItem("Chat-app-user");
+              navigate("/login");
+            }
+            if (res.data.status === false) {
+              toast.error(res.data.message, {
+                position: "bottom-right",
+                autoClose: 5000,
+                pauseOnHover: true,
+                draggable: true,
+              });
+            }
+          });
+      } catch (err) {
+        console.log(err.message);
       }
-    } catch (error) {
-      handleApiError(error);
     }
   }
 
   async function handelAllContacts() {
-    try {
-      const response = await axios.get(apiRoutes.getAll, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "multipart/form-data",
-        },
-      });
-      if (response.data.status === true) {
-        setContacts(response.data.data);
-      } else {
-        handleApiError(response);
+    if (currentUser) {
+      try {
+        axios
+          .get(apiRoutes.allContacts, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          })
+          .then((res) => {
+            if (res.data.status === true) {
+              setContacts(res.data.contacts);
+            }
+            if (res.data.message === "jwt expired") {
+              localStorage.removeItem("Chat-app-user");
+              navigate("/login");
+            }
+            if (res.data.status === false) {
+              toast.error(res.data.message, {
+                position: "bottom-right",
+                autoClose: 5000,
+                pauseOnHover: true,
+                draggable: true,
+              });
+            }
+          });
+      } catch (err) {
+        console.log(err.message);
       }
-    } catch (error) {
-      handleApiError(error);
     }
   }
 

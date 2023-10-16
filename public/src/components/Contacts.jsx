@@ -10,6 +10,10 @@ function Contacts({ contacts, currentUser, changeChat }) {
   useEffect(() => {
     if (currentUser) {
       setCurrentUserName(currentUser.username);
+      if (currentUser.img === undefined) {
+        currentUser.img =
+          "https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png";
+      }
       setCurrentUserImg(currentUser.img);
     }
   }, [currentUser]);
@@ -36,7 +40,11 @@ function Contacts({ contacts, currentUser, changeChat }) {
                 >
                   <ContactImage>
                     <img
-                      src={`data:image/jpeg;base64,${contact.img}`}
+                      src={
+                        contact.img === undefined
+                          ? "https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png"
+                          : `data:image/jpeg;base64,${contact.img}`
+                      }
                       alt="contact profile"
                     />
                   </ContactImage>
@@ -50,7 +58,11 @@ function Contacts({ contacts, currentUser, changeChat }) {
           <CurrentUser>
             <CurrentUserImage>
               <img
-                src={`data:image/jpeg;base64,${currentUserImg}`}
+                src={
+                  currentUserImg === undefined
+                    ? "https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png"
+                    : `data:image/jpeg;base64,${currentUserImg}`
+                }
                 alt="profile"
               />
             </CurrentUserImage>
