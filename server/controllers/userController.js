@@ -152,17 +152,14 @@ const getAllUsers = async (req, res) => {
             "_id"
         ])
         for (let i = 0; i < users.length; i++) {
-
             const imageName = users[i].img;
-
             if (typeof imageName === 'string') {
-
                 const imagePath = path.join(__dirname, '..', 'images', imageName);
                 const imageBase64 = fs.readFileSync(imagePath, { encoding: 'base64' });
                 users[i].img = imageBase64;
             }
-
         }
+
         res.status(200).json({ message: "Users fetched successfully", status: true, data: users })
     }
     catch (err) { res.status(200).json({ message: err.message, status: false }) }
@@ -190,30 +187,11 @@ const getCurrentUser = async (req, res) => {
         const imageName = user.img;
         if (typeof imageName === 'string') {
             const imagePath = path.join(__dirname, '..', 'images', imageName);
-            if (fs.existsSync(imagePath)) {
-                const imageBase64 = fs.readFileSync(imagePath, { encoding: 'base64' });
-                res.status(200).json({
-                    message: "User fetched successfully",
-                    status: true,
-                    data: {
-                        username: user.username,
-                        _id: user._id,
-                        img: imageBase64, // Include the image data
-                    }
-                });
-            }
+            const imageBase64 = fs.readFileSync(imagePath, { encoding: 'base64' });
+            user.img = imageBase64;
+        }
+        res.status(200).json({ message: "Users fetched successfully", status: true, data: user })
 
-        }
-        else {
-            return res.status(200).json({
-                message: "User fetched successfully",
-                status: true,
-                data: {
-                    username: user.username,
-                    _id: user._id
-                }
-            });
-        }
     }
     catch (err) { res.status(200).json({ message: err.message, status: false }) }
 }

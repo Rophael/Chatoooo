@@ -48,8 +48,7 @@ function Chat() {
           })
           .then((res) => {
             if (res.data.status === true) {
-              console.log(res.data.user);
-              setCurrentUser(res.data.user);
+              setCurrentUser(res.data.data);
             }
             if (res.data.message === "jwt expired") {
               localStorage.removeItem("Chat-app-user");
@@ -81,7 +80,7 @@ function Chat() {
           })
           .then((res) => {
             if (res.data.status === true) {
-              setContacts(res.data.contacts);
+              setContacts(res.data.data);
             }
             if (res.data.message === "jwt expired") {
               localStorage.removeItem("Chat-app-user");

@@ -3,7 +3,6 @@ import styled from "styled-components";
 import ani from "../assets/icon.webp";
 
 export default function Welcome(user) {
-  console.log(user);
   return (
     <Container>
       <img src={ani} alt="" />
