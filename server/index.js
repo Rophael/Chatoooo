@@ -50,7 +50,7 @@ const server = app.listen(process.env.PORT, () => {
 const io = new Server(server, {
     connectionStateRecovery: {},
     cors: {
-        origin: 'https://chatoooo.vercel.app/',
+        origin: ['https://chatoooo.vercel.app/', 'http://localhost:3000']
     }
 });
 global.onlineUsers = new Map(); // to store online users

@@ -35,7 +35,7 @@ function Register() {
   });
   useEffect(() => {
     if (localStorage.getItem("Chat-app-user")) {
-      navigate("/chat");
+      navigate("/");
     }
   });
 
@@ -266,14 +266,17 @@ const FormContainer = styled.div`
   }
   /* Media query for smaller screens */
   @media (max-width: 768px) {
-    body {
-      display: block;
-    }
-
     form {
-      padding: 2rem;
+      margin-top: 13rem;
+      overflow-y: auto;
+      padding: 2rem 2rem 2rem 2rem;
+      top: 50%;
       left: 50%;
-      transform: translateX(-50%);
+      transform: translate(-50%, -50%);
+      max-width: 95vw;
+    }
+    span {
+      font-size: 0.7rem;
     }
   }
 `;

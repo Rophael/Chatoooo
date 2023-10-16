@@ -17,7 +17,7 @@ function Login() {
 
   useEffect(() => {
     if (localStorage.getItem("Chat-app-user")) {
-      navigate("/chat");
+      navigate("/");
     }
   });
 
@@ -36,7 +36,7 @@ function Login() {
             });
             setTimeout(() => {
               localStorage.setItem("Chat-app-user", res.data.token);
-              navigate("/chat");
+              navigate("/");
             }, 1000);
           }
           if (res.data.status === false) {
@@ -146,48 +146,52 @@ const FormContainer = styled.div`
     top: 50%;
     left: 20%;
     transform: translate(-50%, -50%);
-  }
-  img {
-    width: 20rem;
-  }
-  input {
-    background-color: transparent;
-    border: 1px solid #000;
-    border-radius: 0.5rem;
-    outline: none;
-    font-size: 1.5rem;
-    &:focus {
-      background-color: #fff;
+    img {
+      width: 20rem;
+    }
+    input {
+      background-color: transparent;
       border: 1px solid #000;
+      border-radius: 0.5rem;
+      outline: none;
+      font-size: 1.5rem;
+      &:focus {
+        background-color: #fff;
+        border: 1px solid #000;
+      }
+    }
+    button {
+      width: 100%;
+      background-color: #455a64;
+      border: none;
+      border-radius: 1rem;
+      padding: 1rem 2rem;
+      width: 100%;
+      outline: none;
+      font-size: 1.5rem;
+      color: #90caf9;
+      cursor: pointer;
+      &:hover {
+        background-color: #90caf9;
+        color: #000;
+        border: 1px solid #000;
+      }
     }
   }
-  button {
-    width: 100%;
-    background-color: #455a64;
-    border: none;
-    border-radius: 1rem;
-    padding: 1rem 2rem;
-    width: 100%;
-    outline: none;
-    font-size: 1.5rem;
-    color: #90caf9;
-    cursor: pointer;
-    &:hover {
-      background-color: #90caf9;
-      color: #000;
-      border: 1px solid #000;
-    }
-  }
+
   /* Media query for smaller screens */
   @media (max-width: 768px) {
-    body {
-      display: block;
-    }
-
     form {
-      padding: 2rem;
+      margin-top: 10rem;
+      max-width: 95vw;
+      overflow-y: auto;
+      padding: 2rem 2rem 2rem 2rem;
+      top: 50%;
       left: 50%;
-      transform: translateX(-50%);
+      transform: translate(-50%, -50%);
+    }
+    span {
+      font-size: 0.7rem;
     }
   }
 `;
@@ -207,10 +211,10 @@ const IconContainer = styled.div`
     width: 100%;
     max-height: 30rem; /* Set a maximum height to maintain the aspect ratio */
   }
-
+  /* Media query for smaller screens */
   @media (max-width: 768px) {
-    top: 20%; /* Adjust the vertical position for smaller screens */
-    left: 50%; /* Center it horizontally on smaller screens */
+    top: 20%; /* Adjust the top position */
+    left: 50%; /* Adjust the left position */
     transform: translate(-50%, -50%);
   }
 `;

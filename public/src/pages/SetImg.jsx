@@ -61,7 +61,7 @@ export default function SetImg() {
             draggable: true,
           });
           setTimeout(() => {
-            navigate("/chat");
+            navigate("/");
           }, 1000);
         } else {
           toast.error(res.data.message, {
@@ -171,5 +171,24 @@ const ImageContainer = styled.div`
     border-radius: 50%;
     border: 2px solid #ccc;
     padding: 5px;
+  }
+  media (max-width: 768px) {
+    .logo {
+      width: 80%;
+    }
+
+    h1 {
+      font-size: 1.2rem;
+    }
+  }
+  @media (max-width: 768px) {
+    .title-container {
+      width: 90%;
+    }
+  }
+  @media (max-width: 768px) {
+    .image-label {
+      margin-top: 1rem;
+    }
   }
 `;
