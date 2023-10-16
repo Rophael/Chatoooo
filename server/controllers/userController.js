@@ -201,9 +201,8 @@ const getCurrentUser = async (req, res) => {
                         img: imageBase64, // Include the image data
                     }
                 });
-            } else {
-                return res.status(500).json({ message: "Image not found", status: false });
             }
+
         }
         else {
             return res.status(200).json({
@@ -211,8 +210,7 @@ const getCurrentUser = async (req, res) => {
                 status: true,
                 data: {
                     username: user.username,
-                    _id: user._id,
-                    img: user.img, // Include the image data
+                    _id: user._id
                 }
             });
         }

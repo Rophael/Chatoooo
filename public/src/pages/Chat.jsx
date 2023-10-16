@@ -24,7 +24,6 @@ function Chat() {
     } else {
       handelCurrentUser();
       handelAllContacts();
-      console.log(contacts);
     }
   });
 
@@ -49,6 +48,7 @@ function Chat() {
           })
           .then((res) => {
             if (res.data.status === true) {
+              console.log(res.data.user);
               setCurrentUser(res.data.user);
             }
             if (res.data.message === "jwt expired") {
@@ -74,7 +74,7 @@ function Chat() {
     if (currentUser) {
       try {
         axios
-          .get(apiRoutes.allContacts, {
+          .get(apiRoutes.getAll, {
             headers: {
               Authorization: `Bearer ${token}`,
             },
