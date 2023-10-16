@@ -31,4 +31,12 @@ const Button = styled.button`
     font-size: 1.3rem;
     color: #9a86f3;
   }
+  @media (max-width: 768px) {
+    svg {
+      font-size: 0.8rem;
+    }
+    right: 10%;
+    padding: 0.4rem;
+    margin-top: 0;
+  }
 `;

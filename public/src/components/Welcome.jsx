@@ -35,12 +35,10 @@ const Container = styled.div`
     h1 {
       font-size: 2rem;
     }
-  }
-
-  @media (min-width: 1024px) {
-    h1 {
-      font-size: 2.5rem;
+    img{
+      width: 50%;
     }
   }
+
 };
 `;

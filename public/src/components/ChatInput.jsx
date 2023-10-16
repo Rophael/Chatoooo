@@ -57,26 +57,6 @@ const Container = styled.div`
   right: 1.8rem;
   width: 72%;
   padding: 0 2rem;
-  @media screen and (min-width: 720px) and (max-width: 1080px) {
-    padding: 0 1rem;
-    gap: 1rem;
-  }
-  .button-container {
-    display: flex;
-    align-items: center;
-    color: black;
-    width: 10%;
-    height: 10%;
-    gap: 1rem;
-    .emoji {
-      position: relative;
-      svg {
-        font-size: 1.5rem;
-        color: #fff;
-        cursor: pointer;
-      }
-    }
-  }
   .input-container {
     width: 100%;
     border-radius: 2rem;
@@ -110,16 +90,34 @@ const Container = styled.div`
       align-items: center;
       background-color: #fff;
       border: none;
-      @media screen and (min-width: 720px) and (max-width: 1080px) {
-        padding: 0.3rem 1rem;
-        svg {
-          font-size: 1rem;
-        }
-      }
+
       svg {
         font-size: 2rem;
         color: #9a86f3;
         cursor: pointer;
+      }
+    }
+  }
+  @media (max-width: 768px) {
+    width: 90%;
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    border-radius: 15rem;
+    transform: translate(-50%, 125%);
+    .input-container {
+      width: 100%;
+      position: absolute;
+      top: 20%;
+      border-radius: 15rem;
+
+      input {
+        font-size: 95%;
+      }
+      button {
+        svg {
+          font-size: 1.5rem;
+        }
       }
     }
   }

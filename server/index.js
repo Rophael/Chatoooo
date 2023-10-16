@@ -55,7 +55,7 @@ const io = new Server(server, {
 });
 global.onlineUsers = new Map(); // to store online users
 io.on('connection', (socket) => {
-    console.log("Socket connected: " + socket.id);
+
     global.chatSocket = socket;
     socket.on("add-user", (userId) => {
         onlineUsers.set(userId, socket.id);

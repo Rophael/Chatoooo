@@ -6,8 +6,7 @@ function Contacts({ contacts, currentUser, changeChat }) {
   const [currentUserName, setCurrentUserName] = useState(undefined);
   const [currentUserImg, setCurrentUserImg] = useState(undefined);
   const [currentSelected, setCurrentSelected] = useState(undefined);
-  console.log(contacts);
-  console.log(currentUser);
+
   useEffect(() => {
     if (currentUser) {
       setCurrentUserName(currentUser.username);
@@ -83,10 +82,17 @@ const Container = styled.div`
   overflow: hidden;
   background-color: #020001;
   border-radius: 3rem;
-  height: 100vh;
+  height: 100%;
+  max-height: 300px;
 
-  @media screen and (min-width: 768px) {
-    grid-template-rows: 15% 65% 20%;
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+    margin-top: 0.3rem;
+    width: 95%;
+    height: 100%;
+    gap: 0.5rem;
   }
 `;
 
@@ -99,6 +105,13 @@ const Brand = styled.div`
   img {
     height: 4rem;
     width: 8rem;
+  }
+  @media (max-width: 768px) {
+    img {
+      padding: 0.5rem;
+      height: 3rem;
+      width: 6rem;
+    }
   }
 `;
 
@@ -124,6 +137,13 @@ const ContactList = styled.div`
   @media screen and (min-width: 768px) {
     grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
   }
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: row;
+    height: 50%;
+    gap: 0.5rem;
+    overflow: auto;
+  }
 `;
 
 const Contact = styled.div`
@@ -140,6 +160,7 @@ const Contact = styled.div`
   @media screen and (min-width: 768px) {
     flex-direction: row;
     padding: 1rem;
+    height: ;
   }
 `;
 
@@ -160,17 +181,25 @@ const ContactUsername = styled.div`
 
 const CurrentUser = styled.div`
   background-color: #9a86f3;
-  height: 7rem;
-  width: 100%;
+  height: 90%;
+
   border-radius: 5rem;
   gap: 3rem;
   display: flex;
   align-items: center;
+  justify-content: center;
+
   transition: 0.5s ease-in-out;
   padding: 0.5rem;
 
   @media screen and (min-width: 768px) {
     grid-template-columns: repeat(auto-fill, minmax(20%, 1fr));
+  }
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: row;
+    height: 30%;
+    gap: 1rem;
   }
 `;
 
@@ -180,6 +209,12 @@ const CurrentUserImage = styled.div`
     width: 4rem;
     border-radius: 2rem;
     border: 2px solid #fff;
+  }
+  @media (max-width: 768px) {
+    img {
+      height: 4rem;
+      width: 4rem;
+    }
   }
 `;
 

@@ -151,6 +151,13 @@ const Container = styled.div`
     @media screen and (max-width: 719px) {
       grid-template-columns: 100%; /* Full-width for smaller screens */
     }
+    @media (max-width: 768px) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0.5rem;
+      gap: 1rem;
+    }
   }
 `;
 export default Chat;
